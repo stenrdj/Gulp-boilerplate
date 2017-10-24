@@ -9,6 +9,7 @@ var sass = require('gulp-sass');
 var browserSync = require('browser-sync');
 var postcss      = require('gulp-postcss');
 var sourcemaps   = require('gulp-sourcemaps');
+var cssnano = require('gulp-cssnano');
 var autoprefixer = require('autoprefixer');
 
 gulp.task('browser-sync', function() {
@@ -38,6 +39,7 @@ gulp.task('styles', function(){
             }}))
         .pipe(sass())
         .pipe(sourcemaps.init())
+        .pipe(cssnano())
         .pipe(postcss([ autoprefixer() ]))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('dist/styles/'))
